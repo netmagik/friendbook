@@ -4,9 +4,24 @@
       <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
+            <a href="/postPage/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
+            <p><%= posts[i].user.userName %></p>
+
+             <!-- Like Button -->
+             <form
+             action="/feed/like/<%= posts[i]._id %>?_method=PUT"
+             method="POST"
+             class="text-center"
+             >
+            <% if(posts[i].likes.length === 0) {%> 
+              <h3 class="mx-1 mb-1">0 likes</h3>
+            <%} else {%>
+              <h3 class="mx-1 mb-1"><%= posts[i].likes.length %> likes</h3>
+            <%}%>
+             <button class="<%= posts[i].likes === posts[i].id ? "btn-danger" : "btn-primary" %> btn  fa fa-heart" type="submit"></button>
+             </form>
           </li>
         <% } %>
         </ul>

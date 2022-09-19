@@ -1,15 +1,17 @@
 <%- include('partials/header') -%>
+
   <div class="container">
 
+    <h1>All posts by <%=userName %></h1>
   <!-- Photos collage -->
-      <ul class="row list-unstyled">
+      <ul class="row">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-lg-3 justify-content-between mt-5">
             <a href="/postPage/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
    
-            <p>Posted by <a href="/feed/byuser/<%=posts[i].user._id%>"><%= posts[i].user.userName %></a></p>
+            <p>Posted by <%= posts[i].user.userName %></p>
 
             <% if(posts[i].likes.length > 0) {%> 
               <p>Liked by <%= posts[i].likes.length %> </p>

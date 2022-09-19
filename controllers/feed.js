@@ -2,7 +2,6 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const User = require('../models/User')
 
-
 module.exports = {
 
 // Get Feed
@@ -21,6 +20,26 @@ getFeed: async (req, res) => {
       console.log(err);
     }
   },
+
+//   Get Individual User Feed
+getUserFeed: async (req, res) => {
+    try {
+        const post = await Post.find({
+            user: req.params.user
+        })
+            .populate('user')
+            .sort({ createdAt: 'desc'})
+            .lean()
+        const creator = await User.findById(req.params.user)
+        res.render('byuser.ejs', {
+            posts: post, 
+            userName: creator.userName,
+        })
+        console.log(`User is ${creator.userName}`)
+    } catch (error) {
+        console.error(error)
+    }
+}, 
 
 // Like Post
 likePost: async(req, res) => {

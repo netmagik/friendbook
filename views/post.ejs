@@ -1,22 +1,22 @@
 <%- include('partials/header') -%>
 <div class="container">
+
   <div class="row justify-content-center mt-5">
-    <div class="col-6">
+    <!-- Main Post Title -->
+    <div class="col-12">
       <h2><%= post.title %></h2>
-      <img class="img-fluid" src="<%= post.image%>" />
-      <p> Post created by: <%= creator.userName %></p>
-      <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/postPage/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
-        </form>
-        <h3 class="mx-1 mb-1"><%= post.likes.length %></h3>
-        
-        <!--  Delete Post Form -->
-        <%if(post.user == user.id){ %>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-11">
+        <!-- Post Caption -->
+      <p><%= post.caption %></p>
+  </div>
+
+       <!--  Delete Post Form -->
+       <div class="col-1">
+       <%if(post.user == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
@@ -26,30 +26,58 @@
         </form>
         <%}%>
       </div>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
-    </div>
+  </div>
 
-    <!-- Display Comments -->
-    <h5>Comments</h5>
-    <ul><% for(let i=0; i < post.comments.length; i++) { %>
-        <li><%=post.comments[i] %></li>
-        <% } %>
-      </ul>
+  <div class="row">   
+  <!-- Post Image -->
+      <img class="img-fluid" src="<%= post.image%>" />
+      <p>Post created by: <%= creator.userName %></p>
+  
+      <!-- Post Likes -->
+      <% if(post.likes.length > 0) {%> 
+        <p>Liked by <%= post.likes.length %> </p>
+       <%}%>
+  </div> 
+
+      <!-- Like Post -->
+      <div class="row justify-content-between">
+        <form
+          class="col-1"
+          id="like"
+          action="/postPage/likePost/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
+        </form>
+      </div> 
+
  <!-- Add New Comments -->
-      <form action="/postPage/comment/<%=post.id %>" method="POST">
-        <div class="col-12 text-center">
-          <textarea name="commentBody" placeholder="Leave a comment..." 
-            id="floatingTextArea" maxlength="300" required></textarea>
-        </div>
+<div class="row">
+  <div class="col-12 text-center form-floating">
+      <form action="/comment/createComment/<%=post.id %>" method="POST" id="comments">
+          <textarea class="form-control" name="text" placeholder="Leave a comment..." id="text" required></textarea>
+            <label for="text">Leave a Comment</label>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/post">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
     </div>
-  </div>
+</div>
+
+<div class="row">
+  <!-- Display Comments -->
+<h5>Comments</h5>
+<ul><% for(let i=0; i < comments.length; i++) { %>
+    <li>
+      <%=comments[i].text %> 
+    </li>
+    <% } %>
+  </ul>
+</div>
+
+<div class="mt-5">
+  <a class="btn btn-primary" href="/post">Return to Profile</a>
+  <a class="btn btn-primary" href="/feed">Return to Feed</a>
+</div>
+
 </div>
 
 <%- include('partials/footer') -%>

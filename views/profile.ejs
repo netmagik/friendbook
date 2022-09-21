@@ -1,18 +1,18 @@
 <%- include('partials/header') -%>
 
+<div class="row">
+  <h1 class="pb-2"><%=user.userName%></h1>
+</div>
+
   <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <div class="card-body">
-          <p><strong>User Name</strong>: <%= user.userName %></p>
-          <p><strong>Email</strong>: <%= user.email %></p>
-        </div>
+    <div class="col-lg-3">
+       <p><strong>User Name</strong>: <%= user.userName %></p>
+      <p><strong>Email</strong>: <%= user.email %></p>
       </div>
-    </div>
   
 
    <!-- Add Photo Form -->
-   <div class="col-9">
+   <div class="col-lg-9">
     <div class="card">
       <div class="card-body">
         <h3>Add a post</h3>

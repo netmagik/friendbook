@@ -18,6 +18,30 @@
     color: #DD4F6C;
  }
 
+ /* Fonts */
+ h1, h2, h3, h4, h5 {
+    font-weight: 500;
+    font-family: 'Montserrat', san-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+#navmenu {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
 footer {
     color: white;

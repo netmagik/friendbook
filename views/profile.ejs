@@ -1,18 +1,43 @@
 <%- include('partials/header') -%>
 
-<div class="container">
-
-  <div class="row mt-5">
-    <div class="col-12">
-      <p><strong>User Name</strong>: <%= user.userName %></p>
-      <p><strong>Email</strong>: <%= user.email %></p>
-      <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <p><strong>User Name</strong>: <%= user.userName %></p>
+          <p><strong>Email</strong>: <%= user.email %></p>
+        </div>
+      </div>
     </div>
+  
+
+   <!-- Add Photo Form -->
+   <div class="col-9">
+    <div class="card">
+      <div class="card-body">
+        <h3>Add a post</h3>
+      <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" placeholder="Title" id="title" name="title" required>
+            <label for="title">Title</label>
+        </div>
+        <div class="mb-3 form-floating">
+          <textarea class="form-control" id="caption" placeholder="Caption" name="caption" required></textarea>
+          <label for="caption">Caption</label>
+        </div>
+        <div class="mb-3 ">
+          <input type="file" class="form-control" placeholder="Upload Image" id="imageUpload" name="file" required>
+        </div>
+        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+      </form>
+      </div>
+    </div>
+      
   </div>
 
+  <!-- User PHotos - thumbnails -->
   <div class="row">
-<!-- User PHotos - thumbnails -->
-      <div class="col-lg-9">
+      <div class="col-lg-12">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
@@ -22,32 +47,8 @@
           </li>
         <% } %>
         </ul>
-        <div class="row justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
-        </div>  
       </div>
-      <!-- Add Photo Form -->
-      <div class="col-lg-3">
-        <div class="mt-5">
-          <h2>Add a post</h2>
-          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-            <div class="mb-3 form-floating">
-                <input type="text" class="form-control" placeholder="Title" id="title" name="title" required>
-                <label for="title">Title</label>
-            </div>
-            <div class="mb-3 form-floating">
-              <textarea class="form-control" id="caption" placeholder="Caption" name="caption" required></textarea>
-              <label for="caption">Caption</label>
-            </div>
-            <div class="mb-3 ">
-              <input type="file" class="form-control" placeholder="Upload Image" id="imageUpload" name="file" required>
-            </div>
-            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-          </form>
-        </div>
-      </div>
-
   </div> 
-
-</div>
-<%- include('partials/footer') -%>
+  
+  <%- include('partials/footer') -%>

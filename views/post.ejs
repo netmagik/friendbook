@@ -1,5 +1,4 @@
 <%- include('partials/header') -%>
-<div class="container">
 
   <div class="row justify-content-center mt-5">
     <!-- Main Post Title -->
@@ -62,22 +61,30 @@
     </div>
 </div>
 
-<div class="row">
   <!-- Display Comments -->
+<div class="row">
 <h5>Comments</h5>
-<ul><% for(let i=0; i < comments.length; i++) { %>
+<ul>
+  <% for(let i=0; i < comments.length; i++) { %>
     <li>
-      <%=comments[i].text %> 
+      <span>User <%= comments[i].createdBy%>:  <%=comments[i].text %> </span>
+     <!-- If comment was created by current user, then show the DELETE button -->
+      <% if(comments[i].createdById == user.id || post.user == user.id) { %>
+        <form action="/comment/deleteComment/<%=post.id%>/<%=comments[i].id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+        <%}%>
     </li>
     <% } %>
   </ul>
 </div>
+
+
 
 <div class="mt-5">
   <a class="btn btn-primary" href="/post">Return to Profile</a>
   <a class="btn btn-primary" href="/feed">Return to Feed</a>
 </div>
 
-</div>
 
 <%- include('partials/footer') -%>

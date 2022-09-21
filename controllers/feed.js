@@ -1,4 +1,3 @@
-const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const User = require('../models/User')
 
@@ -13,8 +12,8 @@ getFeed: async (req, res) => {
         .lean();
       res.render("feed.ejs", { 
         posts: post, 
-        user: post.user,
-        userLogIn: req.user, 
+        postUser: post.user,
+        user: req.user, 
       });
     } catch (err) {
       console.log(err);
@@ -34,6 +33,7 @@ getUserFeed: async (req, res) => {
         res.render('byuser.ejs', {
             posts: post, 
             userName: creator.userName,
+            user: req.user
         })
         console.log(`User is ${creator.userName}`)
     } catch (error) {

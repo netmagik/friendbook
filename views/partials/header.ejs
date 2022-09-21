@@ -17,32 +17,54 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-    />
+    <script src="https://kit.fontawesome.com/d6e83434a4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <header class="container">
-       <a href="/post"><img src="/img/friendbook-logo.png" width="200px" height="200px" alt="Logo"></a>
-    </header>
-    <nav class="navbar">
+    <header>
+      <nav class="navbar navbar-expand-lg py-3">
       <div class="container">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              Profile
-            </li>
-            <li class="nav-item">
-              Feed
-            </li>
-            <li class="nav-item">
-              Dashboard
-            </li>
+        <!-- Logo -->
+       <a navbar-brand href="/"><img src="/img/friendbook-logo.png" width="200px" height="200px" alt="Logo"></a>
+        <!-- Mobile Menu Hamburger button -->
+       <button class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navmenu" 
+        aria-controls="navmenu" 
+        aria-label="Expand Navigation">
+        <i class="fas fa-bars"></i>
+      </button>   
+       <div class="collapse navbar-collapse" id="navmenu">
+<!-- End of mobile menu -->
+       <ul class="navbar-nav ms-auto">
+            <% if (!user) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Signup</a>
+              </li>
+              <% } else { %>
+              <li class="nav-item">
+                <a href="/post" class="nav-link">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a href="/feed" class="nav-link">Feed</a>    
+              </li>
+              <li class="nav-item">
+                <a href="/logout" class="nav-link">Logout</a>
+              </li>
+         
           </ul>
-      </div>
-    </nav>
-    <div class="container">
+          <div class="navbar-text">
+            Hello <%=user.userName%>
+          </div>
+          <% } %>
+          </div>
+        </div>
+        </nav>
+  </header>
+  
+    <div class="container main">
  

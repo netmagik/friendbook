@@ -1,8 +1,6 @@
 <%- include('partials/header') -%>
 
-  <div class="container">
-
-    <h1>All posts by <%=userName %></h1>
+ <h1>All posts by <%=userName %></h1>
   <!-- Photos collage -->
       <ul class="row">
         <% for(var i=0; i<posts.length; i++) {%>
@@ -29,5 +27,4 @@
         <% } %>
 
       </ul>
-  </div>  
 <%- include('partials/footer') -%>

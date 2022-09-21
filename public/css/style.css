@@ -1,0 +1,32 @@
+/* Color overrides: */
+
+.btn-primary {
+    background-color: #0087C4;
+    border-color: #0087C4;
+ }
+
+ .btn-primary:hover, .btn-primary:focus {
+    background-color: #00AE9F;
+    border-color:  #00AE9F;
+ }
+
+ a {
+    color:  #0087C4;
+ }
+
+ a:focus, a:hover {
+    color: #DD4F6C;
+ }
+
+
+footer {
+    color: white;
+}
+
+footer i {
+    font-size: 2rem;
+}
+
+.main {
+    min-height: 100vh;
+}

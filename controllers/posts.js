@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const User = require('../models/User');
 
 module.exports = {
 
@@ -10,6 +11,23 @@ module.exports = {
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
+    }
+  },
+
+  // Add User Profile PHoto under Profile/Post, if there isn't one already
+  addProfilePhoto: async (req, res) => {
+    const user = await User.findById(req.user.id)
+    try {
+      const update = await cloudinary.uploader.upload(req.file.path);
+      user = await User.findOneAndUpdate({
+        _id: req.user.id,
+        image: update.secure_url,
+        cloudinaryId: update.public_id,
+      })
+      console.log("Profile Photo added");
+      res.redirect('/post');
+    } catch (error) {
+      console.log(error)
     }
   },
 

@@ -1,11 +1,13 @@
 /* Color overrides: */
 
-.btn-primary {
+.btn {
     background-color: #0087C4;
     border-color: #0087C4;
  }
 
- .btn-primary:hover, .btn-primary:focus {
+ .btn:hover, .btn:focus, .btn:active,
+ .btn:first-child:hover, 
+ :not(.btn-check)+.btn:hover {
     background-color: #00AE9F;
     border-color:  #00AE9F;
  }
@@ -16,6 +18,11 @@
 
  a:focus, a:hover {
     color: #DD4F6C;
+ }
+
+ .btn-secondary {
+    background-color: #F5AE4F;
+    border-color: #F5AE4F;
  }
 
  /* Fonts */

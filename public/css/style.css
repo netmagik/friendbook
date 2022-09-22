@@ -61,3 +61,8 @@ footer i {
 .main {
     min-height: 100vh;
 }
+
+.avatar {
+    max-width: 100px;
+    border-radius: 50%;
+}

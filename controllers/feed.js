@@ -32,7 +32,7 @@ getUserFeed: async (req, res) => {
         const creator = await User.findById(req.params.user)
         res.render('byuser.ejs', {
             posts: post, 
-            userName: creator.userName,
+            creator: creator,
             user: req.user
         })
         console.log(`User is ${creator.userName}`)

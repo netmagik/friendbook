@@ -29,11 +29,25 @@ module.exports = {
                 await Comment.deleteOne({
                     _id: req.params.commentid
                 })
-                console.log("Deleted Comment");
                 res.redirect(`/postPage/${req.params.postid}/#comments`);
-
             } catch (error) {
                 console.error(error)
             } 
         },
+
+    // Edit Comment
+    editComment: async (req, res) => {
+        try {
+            const comment = await Comment.findById(req.params.commentid)
+
+            if (!comment) {
+                return res.render('error/404')
+            }
+            comment.text = req.body.text;
+            await comment.save();
+            res.redirect(`/postPage/${req.params.postid}/#comments`);
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

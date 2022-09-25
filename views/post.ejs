@@ -68,14 +68,41 @@
   <% for(let i=0; i < comments.length; i++) { %>
     <li>
       <span>User <%= comments[i].createdBy%>:  <%=comments[i].text %> </span>
-     <!-- If comment was created by current user, then show the DELETE button -->
+
+     <!-- If comment was created by current user, then show the DELETE and Edit buttons -->
       <% if(comments[i].createdById == user.id || post.user == user.id) { %>
         <form action="/comment/deleteComment/<%=post.id%>/<%=comments[i].id %>?_method=DELETE" method="POST">
-          <button type="submit">Delete</button>
-        </form>
+            <button class="btn btn-danger fa fa-trash" type="submit"></button>
+            <button type="button" class="btn btn-warning fa fa-edit" data-bs-toggle="modal" data-bs-target="#editComment-<%= comments[i].id %>"></button>
+          </form>
         <%}%>
+
+        <!-- Open Modal to Edit Comment -->
+    <%if(comments[i].createdById == user.id){ %>
+      <div class="modal fade" id="editComment-<%= comments[i].id %>" tabindex="-1" aria-labelledby="editcomment" aria-hidden="true">
+        <div class="modal-dialog">
+          <form class="modal-content" action="/comment/editComment/<%= post.id %>/<%= comments[i].id %>?_method=PATCH" method="POST">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="text" class="form-label">Edited Comment</label>
+                <textarea class="form-control" id="text" name="text"><%= comments[i].text %></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary">Update Comment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%}%>
     </li>
     <% } %>
+
   </ul>
 </div>
 

@@ -8,46 +8,42 @@
     <div class="col-lg-3">
        <p><strong>User Name</strong>: <%= user.userName %></p>
       <p><strong>Email</strong>: <%= user.email %></p>
+      <img class="img-fluid" src="<%= user.image%>">
 
   <!-- If the User already doesn't have a profile image set, open modal to upload a photo -->
-      <% if (!user.image) { %>
-        
+  <% if (user.tempImage) { %>
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addphoto">
-  Add Photo
-</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addphoto">
+      Add Photo
+    </button>
 
-<!-- Modal -->
-<div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="addphoto" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addphototitle">Upload a Profile Photo</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Form to Add Profile PHoto -->
-        <form action="/post/addProfilePhoto/<%=user.id%>?_method=PUT" enctype="multipart/form-data" method="POST">
-          <div class="mb-3 ">
-            <input type="file" class="form-control" placeholder="Upload Profile Photo" id="imageUpload" name="img" required>
+    <!-- Modal -->
+    <div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="addphoto" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addphototitle">Upload a Profile Photo</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          <div class="modal-body">
+            <!-- Form to Add Profile PHoto -->
+            <form action="/post/addProfilePhoto/<%=user.id%>?_method=PATCH" enctype="multipart/form-data" method="POST">
+              <div class="mb-3 ">
+                <input type="file" class="form-control" placeholder="Upload Profile Photo" id="imageUpload" name="img" required>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
-  </div>
+    <% } %>
 </div>
-
-      <% } else { %>
-        <img class="img-fluid" src="<%= user.image%>">
-        <% } %>
-      </div>
   
 
    <!-- Add Photo Form -->

@@ -8,6 +8,9 @@ const UserSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  tempImage: {
+    type: Boolean,
+  },
   cloudinaryId: {
     type: String,
     require: true,

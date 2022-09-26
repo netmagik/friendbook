@@ -14,24 +14,34 @@ module.exports = {
     }
   },
 
-  // Add User Profile PHoto under Profile/Post, if there isn't one already
+  // Add User Profile PHoto under Profile/Post, if User has a Temproary image placeholder
   addProfilePhoto: async (req, res) => {
-    const user = await User.findById(req.user.id)
+    
     try {
+      const user = await User.findById(req.user.id)
+      if(req.file) {
       const update = await cloudinary.uploader.upload(req.file.path);
-      user = await User.findOneAndUpdate({
-        _id: req.user.id,
-        image: update.secure_url,
-        cloudinaryId: update.public_id,
-      })
+      user.image = update.secure_url,
+      user.cloudinaryId = update.public_id,
+      user.tempImage = false,
+      await user.save()
+      // user = await User.findOneAndUpdate({
+      //   _id: req.user.id,
+      //   image: update.secure_url,
+      //   cloudinaryId: update.public_id,
+      // })
       console.log("Profile Photo added");
       res.redirect('/post');
+      } else {
+        res.redirect('/post')
+      }
+      
     } catch (error) {
       console.log(error)
     }
   },
 
-  // Create New Post
+    // Create New Post
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary

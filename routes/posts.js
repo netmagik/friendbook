@@ -8,6 +8,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get("/", ensureAuth, postsController.getProfile);
 router.post("/createPost", upload.single("file"), postsController.createPost);
 router.delete("/deletePost/:id", postsController.deletePost);
-router.put('/addProfilePhoto/:userid', upload.single("img"), postsController.addProfilePhoto);
+router.patch('/addProfilePhoto/:userid', upload.single("img"), postsController.addProfilePhoto);
 
 module.exports = router;

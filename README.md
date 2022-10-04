@@ -1,20 +1,13 @@
-# Install
+# Friendbook
+Full-stack social media app for artists to share their creative content. It's a simplified version of Instagram. 
+Users can create an account, add their avatar photos, add images for the feed, share with others. They can comment on other people's photos and like them.
 
-`npm install`
+## How It's Made:
+Tech used: HTML/CSS, EJS, Cloudinary, Bootstrap, JavaScript, Node.js, Express, MongoDB, Passport for Authentication
 
----
+## Optimizations:
+- Optimize UI
+- Add option to update the avatar
+- Set options to make photos public and private
 
-# Things to add
 
-- Create a `.env` file in config folder and add the following as `key = value`
-  - PORT = 2121 (can be any port example: 3000)
-  - DB_STRING = `your database URI`
-  - CLOUD_NAME = `your cloudinary cloud name`
-  - API_KEY = `your cloudinary api key`
-  - API_SECRET = `your cloudinary api secret`
-
----
-
-# Run
-
-`npm start`

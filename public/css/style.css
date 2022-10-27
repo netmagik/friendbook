@@ -115,7 +115,7 @@ a, a > span {
     position: absolute;
     transition: transform 0.5s ease;
   }  
-  
+
 .border-effect {
     padding: 10px;
     color: black;
@@ -142,4 +142,16 @@ a, a > span {
 
 .border-effect:hover:before, .border-effect:hover:after {
     transform:  scale(1, 1);
+}
+
+.fa {
+    padding: 5px;
+    border: none;
+    background: none;
+    color: #dd4f6c;
+    transition: transform 0.5s ease;
+}
+
+.fa:hover {
+    transform: scale(2);
 }

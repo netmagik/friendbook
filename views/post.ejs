@@ -30,51 +30,56 @@
   <div class="row">   
   <!-- Post Image -->
       <img class="img-fluid" src="<%= post.image%>" />
-      <p>Post created by: <%= creator.userName %></p>
-  
+   </div> 
+   <div class="d-flex justify-content-between">
+      <p class="lead pt-3">Post created by: <span class="highlight"><%= creator.userName %></span></p>
+      <div class="ml-auto pt-3 d-flex">
       <!-- Post Likes -->
       <% if(post.likes.length > 0) {%> 
-        <p>Liked by <%= post.likes.length %> </p>
+        <p class="px-2 lead">Liked by <%= post.likes.length %> </p>
        <%}%>
-  </div> 
+        <!-- Like Post -->
+       <form
+       class="col-1"
+       id="like"
+       action="/postPage/likePost/<%= post.id %>?_method=PUT"
+       method="POST"
+     >
+       <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
+     </form>
+    </div>
+    </div>
 
-      <!-- Like Post -->
+    
       <div class="row justify-content-between">
-        <form
-          class="col-1"
-          id="like"
-          action="/postPage/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
-        </form>
+      
       </div> 
 
  <!-- Add New Comments -->
 <div class="row">
-  <div class="col-12 text-center form-floating">
+  <div class="col-12 mt-4 form-floating">
       <form action="/comment/createComment/<%=post.id %>" method="POST" id="comments">
-          <textarea class="form-control" name="text" placeholder="Leave a comment..." id="text" required></textarea>
-            <label for="text">Leave a Comment</label>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <label class="py-2" for="text">Leave a Comment</label>
+          <textarea class="form-control" name="text" placeholder="comment..." id="text" required></textarea>
+        <button class="btn btn-primary my-3" type="submit">Submit</button>
       </form>
     </div>
 </div>
 
   <!-- Display Comments -->
-<div class="row">
+<div class="row mt-4">
 <h5>Comments</h5>
-<ul>
+<ul class="list-group">
   <% for(let i=0; i < comments.length; i++) { %>
-    <li>
-      <span>User <%= comments[i].createdBy%>:  <%=comments[i].text %> </span>
+    <li class="list-group-item d-flex">
+      <span class="fw-bold"><%= comments[i].createdBy%> :</span><span class="mx-4"> <%= comments[i].text%></span>
 
      <!-- If comment was created by current user, then show the DELETE and Edit buttons -->
       <% if(comments[i].createdById == user.id || post.user == user.id) { %>
         <form action="/comment/deleteComment/<%=post.id%>/<%=comments[i].id %>?_method=DELETE" method="POST">
             <button class="btn btn-danger fa fa-trash" type="submit"></button>
             <button type="button" class="btn btn-warning fa fa-edit" data-bs-toggle="modal" data-bs-target="#editComment-<%= comments[i].id %>"></button>
-          </form>
+        </form>
         <%}%>
 
         <!-- Open Modal to Edit Comment -->
@@ -108,7 +113,7 @@
 
 
 
-<div class="mt-5">
+<div class="mt-5 justify-content-center d-flex gap-2">
   <a class="btn btn-primary" href="/post">Return to Profile</a>
   <a class="btn btn-primary" href="/feed">Return to Feed</a>
 </div>

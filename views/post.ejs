@@ -72,7 +72,7 @@
 <ul class="list-group">
   <% for(let i=0; i < comments.length; i++) { %>
     <li class="list-group-item d-flex">
-      <span class="fw-bold"><%= comments[i].createdBy%> :</span><span class="mx-4"> <%= comments[i].text%></span>
+      <span class="fw-bold"><%= comments[i].createdBy%>:</span><span class="mx-4"> <%= comments[i].text%></span>
 
      <!-- If comment was created by current user, then show the DELETE and Edit buttons -->
       <% if(comments[i].createdById == user.id || post.user == user.id) { %>

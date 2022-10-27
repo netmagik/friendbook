@@ -79,6 +79,7 @@ footer i {
 
 .main {
   min-height: 100vh;
+  padding: 0 30px;
 }
 
 .avatar {

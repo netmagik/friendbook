@@ -69,11 +69,11 @@ body {
 }
 
 footer {
-  color: white;
+  background-color: #e1e4e8;
 }
 
 footer i {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .main {

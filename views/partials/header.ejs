@@ -50,24 +50,27 @@
        <ul class="navbar-nav ms-auto">
             <% if (!user) { %>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link border-effect" href="/login">Login</a>
                 </li>
               <li class="nav-item">
-                <a class="nav-link" href="/signup">Signup</a>
+                <a class="nav-link border-effect" href="/signup">Signup</a>
               </li>
               <% } else { %>
+                <li class="nav-item">
+                  <a href="/post" class="nav-link border-effect">Add New Photo</a>
+                </li>
               <li class="nav-item">
-                <a href="/post" class="nav-link">Profile</a>
+                <a href="/post" class="nav-link border-effect">Profile</a>
               </li>
               <li class="nav-item">
-                <a href="/feed" class="nav-link">Feed</a>    
+                <a href="/feed" class="nav-link border-effect">Feed</a>    
               </li>
               <li class="nav-item">
-                <a href="/logout" class="nav-link">Logout</a>
+                <a href="/logout" class="nav-link border-effect">Logout</a>
               </li>
          
           </ul>
-          <div class="highlight">
+          <div class="ml-auto highlight">
             Hello <%=user.userName%>
           </div>
           <% } %>

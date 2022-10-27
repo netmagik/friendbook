@@ -1,13 +1,10 @@
 <%- include('partials/header') -%>
 
-<div class="row">
-  <h1 class="pb-2"><%=user.userName%></h1>
-</div>
-
-  <div class="row">
-    <div class="col-lg-3">
-       <p><strong>User Name</strong>: <%= user.userName %></p>
-      <p><strong>Email</strong>: <%= user.email %></p>
+<h1 class="text-center py-4"><%= user.userName %> profile</h1>
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-3 d-flex flex-column align-items-center py-4">
+       <p class=""><strong>Username: </strong> <span class="highlight"><%= user.userName %></span></p>
+      <p><strong>Email: </strong> <span class="highlight"><%= user.email %></span></p>
       <img class="profile-img" src="<%= user.image%>">
 
   <!-- If the User already doesn't have a profile image set, open modal to upload a photo -->
@@ -43,14 +40,14 @@
       </div>
     </div>
     <% } %>
-</div>
+  </div>
   
 
    <!-- Add Photo Form -->
    <div class="col-lg-9">
     <div class="card">
       <div class="card-body">
-        <h3>Add a post</h3>
+        <h3>Add a photo</h3>
       <form action="/post/createPost" enctype="multipart/form-data" method="POST">
         <div class="mb-3 form-floating">
             <input type="text" class="form-control" placeholder="Title" id="title" name="title" required>
@@ -82,7 +79,9 @@
           </li>
         <% } %>
         </ul>
+         <div class="py-4 text-center">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
+         </div>
       </div>
   </div> 
   

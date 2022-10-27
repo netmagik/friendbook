@@ -8,7 +8,7 @@
     <div class="col-lg-3">
        <p><strong>User Name</strong>: <%= user.userName %></p>
       <p><strong>Email</strong>: <%= user.email %></p>
-      <img class="img-fluid" src="<%= user.image%>">
+      <img class="profile-img" src="<%= user.image%>">
 
   <!-- If the User already doesn't have a profile image set, open modal to upload a photo -->
   <% if (user.tempImage) { %>

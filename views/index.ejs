@@ -1,5 +1,17 @@
 <%- include('partials/header') -%>
 
+<div class="px-4 py-5 my-9 text-center">
+  <h1 class="display-5 fw-bold">Share your photos with closest friends</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Upload your work in progress and share with other artists, get feedback and inspiration for your art projects</p>
+
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="/login" type="button" class="btn btn-primary btn-lg px-4 gap-3">Login</a>
+      <a href="/signup" type="button" class="btn btn-secondary btn-lg px-4">Signup</a>
+    </div>
+  </div>
+</div>
+
   <!-- Photos collage -->
       <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>

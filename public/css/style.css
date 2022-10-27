@@ -1,68 +1,93 @@
 /* Color overrides: */
 
 .btn {
-    background-color: #0087C4;
-    border-color: #0087C4;
- }
+  background-color: #0087c4;
+  border-color: #0087c4;
+}
 
- .btn:hover, .btn:focus, .btn:active,
- .btn:first-child:hover, 
- :not(.btn-check)+.btn:hover {
-    background-color: #00AE9F;
-    border-color:  #00AE9F;
- }
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:first-child:hover,
+:not(.btn-check) + .btn:hover {
+  background-color: #00ae9f;
+  border-color: #00ae9f;
+}
 
- a {
-    color:  #0087C4;
- }
+a {
+  color: #0087c4;
+}
 
- a:focus, a:hover {
-    color: #DD4F6C;
- }
+.highlight {
+    color: #dd4f6c;
+}
 
- .btn-secondary {
-    background-color: #F5AE4F;
-    border-color: #F5AE4F;
- }
+a:focus,
+a:hover {
+  color: #dd4f6c;
+}
 
- /* Fonts */
- h1, h2, h3, h4, h5 {
-    font-weight: 500;
-    font-family: 'Montserrat', san-serif;
+.btn-secondary {
+  background-color: #f5ae4f;
+  border-color: #f5ae4f;
+}
+
+/* Fonts */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+  font-family: "Montserrat", san-serif;
 }
 
 h1 {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 h2 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 #navmenu {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  background: rgb(0, 135, 196);
+  background: linear-gradient(
+    126deg,
+    rgba(0, 135, 196, 0.29735644257703087) 10%,
+    rgba(0, 174, 159, 0.3113620448179272) 56%,
+    rgba(255, 255, 255, 0.9332107843137255) 100%
+  );
 }
 
 footer {
-    color: white;
+  color: white;
 }
 
 footer i {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .main {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .avatar {
-    max-width: 100px;
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+.profile-img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 }

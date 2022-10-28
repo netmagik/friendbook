@@ -15,6 +15,26 @@ Tech used: HTML/CSS, EJS, Cloudinary, Bootstrap, JavaScript, Node.js, Express, M
 - Add option to update the avatar
 - Set options to make photos public and private
 
+## Run Locally:
+Clone the project
+```
+git clone https://github.com/netmagik/friendbook.git
+```
+
+Go to the project directory
+```
+cd friendbook
+```
+Install dependencies
+```
+npm install
+```
+Start the server
+```
+npm run start
+```
+
+
 <div align="center">
 <img src="https://user-images.githubusercontent.com/3833560/198386885-24940a6f-cbd3-478d-b6e8-7f561a6d8e0f.png">
 

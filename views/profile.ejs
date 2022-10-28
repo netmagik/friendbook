@@ -72,10 +72,21 @@
       <div class="col-lg-12">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
+          <li class="col-6 mt-5 d-flex flex-column">
             <a href="/postPage/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
+              <!--  Delete Post Form -->
+            <div class="mt-2">
+             
+              <form
+              action="/post/deletePost/<%= posts[i]._id %>?_method=DELETE"
+              method="POST"
+                >
+              <button class="btn btn-primary fa fa-trash" type="submit"></button>
+              </form>
+            
+            </div>
           </li>
         <% } %>
         </ul>

@@ -2,8 +2,6 @@
 
 # Friendbook
 
-**Link to project:**  https://web-production-5c14.up.railway.app/
-
 Full-stack social media app for artists to share their creative content. It's a simplified version of Instagram. 
 Users can create an account, add their avatar photos, add images for the feed, share with others. They can comment on other people's photos and like them.
 
